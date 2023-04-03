@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* font-family: 'Exo', sans-serif; */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* scroll-behavior = davranışı: smooth=yumuşak  scroll u kaydırırken sayfa yumuşak geçişli olsun. */
+  scroll-behavior: smooth;
+  font-family: "Exo", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  color: peru;
+  background-color: rgb(247, 210, 174);
+  /* line-height satırlar arası boşluk; */
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* parent ın rengini alsın. */
+}
+li {
+  list-style: none;
+}
+a,
+span,
+button,
+input,
+img,
+i {
+  display: block;
+}
+
+button,
+input {
+  border: none;
+  background: none;
+  outline: none;
+  font: inherit;
+}
+button,
+i {
+  cursor: pointer;
+}
+input {
+  width: 100%;
+}
+/* ********* */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline */
+.container {
+  padding-inline: 16px;
+}
+.section {
+  padding-block: 125px 87px; /*125px yukarıdan bosluk 87px asagıdan bosluk*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Exo 2", sans-serif;
+  font-style: normal;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.grid {
+  display: grid;
+  gap: 15px;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-holder {
+  aspect-ratio: var(--width) / var(--height);
+  /* aspect-ratio en boy oranını korumak için.
+  https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+  */
+  background-color: rgb(247, 210, 174);
+
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 21px;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+}
+
+.title-wrapper {
+  margin-block-end: 20px;
+}
+
+.title-shape {
+  margin-block-start: 14px;
+  margin-inline: auto;
+}
+.button {
+  padding: 14px 35px;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 1s ease-in-out;
+}
+
+.buton:hover {
+  background-color: #fff;
+}
+
+/* HEADER */
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: rgb(247, 210, 174);
+
+  padding-block: 15px;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 2px solid peru;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*! İCON START */
+/*! icon_menu classı ile tek bir çizgi oluşturduk. */
+.nav_toggle {
+  width: 30px;
+  height: 30px;
+  transition-duration: 0.5s;
+}
+
+.icon_menu {
+  transition-duration: 0.5s;
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  position: relative;
+  text-align: left;
+}
+
+/* ::before ile üstüne 10px mesafe ile çizgi oluşturmuş olduk  */
+.icon_menu::before {
+  content: "";
+  position: absolute;
+  transition-duration: 0.5s;
+  width: 30px;
+  height: 2px;
+  top: 10px;
+  background-color: black;
+}
+/* ::before ile üstüne -10px mesafe ile çizgi oluşturmuş olduk  */
+.icon_menu::after {
+  content: "";
+  position: absolute;
+  transition-duration: 0.5s;
+  width: 30px;
+  height: 2px;
+  top: -10px;
+  background-color: black;
+}
+
+/* active tıklandıgında */
+.nav_toggle.active .icon_menu {
+  transition: 0.5s;
+  background: transparent; /* icona tıklayınca arka plan tranparent olsun.*/
+}
+
+.nav_toggle.active .icon_menu::before {
+  transform: rotateZ(45deg) scaleX(1.25) translate(-5px, -5px);
+}
+.nav_toggle.active .icon_menu::after {
+  transform: rotateZ(-45deg) scaleX(1.25) translate(-7px, 7px);
+}
+/*! İCON END */
+.logo img {
+  height: 6vh;
+}
+
+.nav_menu {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  display: grid;
+  place-content: center;
+  background-color: rgb(247, 210, 174);
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  font-weight: 900;
+  transition: all 0.5s cubic-bezier(0.9, 0.3, 0.6, 0.22);
+}
+.show_menu {
+  top: 68px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.7s cubic-bezier(0.9, 0.3, 0.6, 0.22);
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+.nav_link {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+/* HOme */
+.home {
+  background-image: url("./images/banner.jpg");
+  /* background-size: cover; */
+  background-size: 100% 50vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #243238;
+  color: #fff;
+}
+
+.home-content {
+  padding: 150px 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-title {
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Exo 2", sans-serif;
+}
+/* .typing_text {
+  width: 300px;
+  overflow: hidden;
+  border: 1px solid red;
+} */
+
+.profession_text {
+  font-family: "Exo 2", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  position: relative;
+  text-transform: uppercase;
+  /* line-height: 1.2; */
+  margin-bottom: 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: #fff;
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  letter-spacing: 1rem;
+}
+.typed-cursor {
+  display: none;
+}
+.typing_text {
+  display: flex;
+  gap: 1rem;
+}
+.text {
+  font-family: "Exo", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: #fff;
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  letter-spacing: 1rem;
+}
+.social_link {
+  display: flex;
+  padding-bottom: 1rem;
+
+  gap: 1rem;
+  transition: all 0.5s ease;
+}
+.social_link a:hover {
+  color: rgb(238, 186, 133);
+
+  transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 300px) {
+  .text,
+  .profession_text {
+    font-size: 1rem;
+    /* border: 1px solid red; */
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .text,
+  .profession_text {
+    font-size: 1.8rem;
+    /* border: 1px solid red; */
+    letter-spacing: 0.5rem;
+  }
+}
+/*! YETENEKLER */
+
+.service_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+.service_list img {
+  width: 96px;
+}
+.title {
+  text-align: center;
+}
+.section_title {
+  font-family: "Exo", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: rgba(185, 3, 3, 0.973);
+  -webkit-text-stroke-width: 1px;
+  white-space: nowrap;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+footer {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+footer img {
+  height: 8vh;
+}
+.date {
+  display: flex;
+  font-weight: 700;
+  padding-top: 0.5rem;
+}

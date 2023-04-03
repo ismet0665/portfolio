@@ -1,0 +1,16 @@
+1-  icon https://boxicons.com/usage#list-icons
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+
+2- https://swiperjs.com/get-started#use-swiper-from-cdn
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+3-  scrollrevealjs sayfayı aşagıya kaydırırken sayfaların yavaşca olusmasınısı saglayan efek.
+	https://scrollrevealjs.org/guide/hello-world.html 
+    <script src="https://unpkg.com/scrollreveal"></script>
+ 
+4- geçişli yazı için
+https://mattboldt.github.io/typed.js/docs/
+https://mattboldt.github.io/typed.js/
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.15"></script>
